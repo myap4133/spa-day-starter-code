@@ -24,3 +24,29 @@ table {
             padding: 10px;
             text-align: center;
 }
+
+footer {
+  display: flex;
+}
+
+footer > div {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.first{
+    background-color: #FF0000;
+}
+
+.second{
+    background-color: #008000;
+}
+
+.third{
+    background-color: #FF69B4;
+}
+
+.fourth{
+    background-color: #3A615E;
+}
