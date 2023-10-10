@@ -7,20 +7,28 @@
 <body>
 
     <h2>Create Account</h2>
-    <form method="post" action="/user">
+    <form method="post" action="/user/add">
         <Label>Username
-            <input name = "username" th:value="${username}" type="text">
-        </Label><br>
+            <input th:field="${user.username}" class="form-control">
+        </Label>
+        <p th:errors="${user.username}" style="color:red"></p>
+        <br>
         <Label>Email
-            <input name = "email" th:value="${email}" type="email">
-        </Label><br>
+            <input th:field="${user.email}" class="form-control">
+        </Label>
+        <p th:errors="${user.email}" style="color:red"></p>
+        <br>
         <Label>Password
-            <input name = "password" type="password">
-        </Label><br>
+            <input th:field="${user.password}" class="form-control">
+        </Label>
+        <p th:errors="${user.password}" style="color:red"></p>
+        <br>
         <Label>Verify Password
-            <input name = "verify" type="password">
-        </Label><br>
-        <p th:if="@{error}" th:text="${error}" style="color:red"></p><br>
+            <input th:field="${user.verify}" class="form-control">
+        </Label>
+        <p th:errors="${user.verify}" style="color:red"></p>
+        <br>
+        <p th:if="@{error}" th:text="${error}" style="color:red"></p>
         <input type="submit">
     </form>
 

@@ -50,3 +50,7 @@ footer > div {
 .fourth{
     background-color: #3A615E;
 }
+
+.error {
+    color: red;
+}
