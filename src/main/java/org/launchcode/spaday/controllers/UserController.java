@@ -17,19 +17,22 @@ import java.util.Objects;
 @RequestMapping("user")
 public class UserController {
 
-    @PostMapping("add")
+    @PostMapping("")
     public String processAddUserForm(Model model, @ModelAttribute @Valid User user, Errors errors) {
-        if(errors.hasErrors()){
-            model.addAttribute("username", user.getUsername());
-            model.addAttribute("email", user.getEmail());
-            return "user/add";
-        }
-        if(user.getPassword().equals(user.getVerify())){
-            model.addAttribute("username", user.getUsername());
-            return "user/index";
-        }
         model.addAttribute("username", user.getUsername());
         model.addAttribute("email", user.getEmail());
+        model.addAttribute("password", user.getPassword());
+        model.addAttribute("verify", user.getVerify());
+
+        if(errors.hasErrors()){
+            if(!Objects.equals(user.getPassword(), user.getVerify())){
+                model.addAttribute("error", "Passwords must match!");
+            }
+            return "user/add";
+        }
+        if(Objects.equals(user.getPassword(), user.getVerify())){
+            return "user/index";
+        }
         model.addAttribute("error", "Passwords must match!");
         return "user/add";
     }

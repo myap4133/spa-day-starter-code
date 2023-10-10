@@ -8,9 +8,6 @@ import java.util.Objects;
 
 public class User {
 
-    private int id;
-    private static int nextId = 1;
-
     @NotBlank(message = "Username is required.")
     @Size(min = 5, max = 15, message = "Username must be between 5 to 15 characters.")
     private String username;
@@ -26,12 +23,9 @@ public class User {
     private String verify;
 
     public User(){
-        id = nextId;
-        nextId++;
     }
 
     public User(String username, String email, String password, String verify) {
-        this();
         this.username = username;
         this.email = email;
         this.password = password;
@@ -52,6 +46,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setVerify(String verify) {
+        this.verify = verify;
     }
 
     public String getPassword() {
